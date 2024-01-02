@@ -1,0 +1,37 @@
+KAFKA QUICKSTART FOR WINDOWS:
+
+1️⃣ Get the latest version here: https://kafka.apache.org/quickstart
+
+Extract it to the C: drive (RECOMMENDED) and rename the extracted folder to "Kafka."
+
+2️⃣ Open the Windows Terminal (not CMD) as an Administrator.
+
+You can obtain it from Microsoft here: https://apps.microsoft.com/detail/9N0DX20HK701?hl=en-us&gl=US
+
+3️⃣ In the Windows Terminal, navigate to the Kafka folder: cd C:\Kafka
+
+4️⃣ Initialize Zookeeper
+.\bin\windows\zookeeper-server-start.bat 
+.\config\zookeeper.properties
+
+5️⃣ Initialize Kafka
+.\bin\windows\kafka-server-start.bat 
+.\config\server.properties
+
+6️⃣ Create a new topic in Kafka
+.\bin\windows\kafka-topics.bat --create --topic {topic-name} --bootstrap-server {host}:9092
+
+7️⃣ Describe the topic details
+.\bin\windows\kafka-topics.bat --describe --topic {topic-name} --bootstrap-server {host}:9092
+
+8️⃣ List all the topics inside the broker
+.\bin\windows\kafka-topics.bat --list --bootstrap-server {host}:9092
+
+9️⃣ Initialize a console to read messages from a specific topic
+.\bin\windows\kafka-console-consumer.bat --topic {topic-name} --bootstrap-server {host}:9092
+
+🔟 Initialize a console to send messages to a specific topic
+.\bin\windows\kafka-console-producer.bat --broker-list {host}:9092 --topic {topic-name}
+
+
+PLUS: If you want to view Kafka logs in Windows, you must modify Kafka/config/server.properties in the "log.dirs" value, writing the directory where you placed Kafka: log.dirs=c:/Kafka/kafka-logs.
